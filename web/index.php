@@ -1,14 +1,13 @@
 <?php
-//use \lib\Router;
+use lib\Router;
+use lib\App;
 use controller\PageController;
 
+require_once "../lib/autoload.php";
 
-//require_once "../lib/autoload.php";
-include "../controller/PageController.php";
-require_once "../lib/Router.php";
-include "../lib/App.php";
 
-$params = $_GET;
+//$params = $_GET;
+$params = $_SERVER['REQUEST_URI'];
 $app = new \lib\App();
 $output = $app->run($params);
 echo $output;

@@ -1,13 +1,20 @@
 <?php
 namespace lib;
-use Router;
 
 class App
 {
+    public function __construct()
+    {
+        Config::set('routes', [
+           'default' => '',
+           'admin' => 'admin_',
+        ]);
+    }
 
     public function run($params)
     {
-        $router = new Router();
+//        $router = new Router();
+        $router = new UriRouter();
 
 //$router->parseUrl($_SERVER['REQUEST_URI']);
         $router->parseUrl($params);
