@@ -1,6 +1,5 @@
 <?php
 
-echo "Test";
 class Router
 {
     protected $controller;
@@ -9,6 +8,7 @@ class Router
 
     public function parseUrl($uri)
     {
+//        print_r(explode("/", $uri['r']));
         list($this->controller, $this->action) = explode("/", $uri['r']);
         $this->params = $uri;
     }

@@ -1,7 +1,2 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ростислав
- * Date: 10.03.2018
- * Time: 14:21
- */
+defined('INDEX') ? exit('attack!!') : null;
