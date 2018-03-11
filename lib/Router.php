@@ -10,7 +10,7 @@ class Router
     public function parseUrl($uri)
     {
 //        print_r(explode("/", $uri['r']));
-        list($this->controller, $this->action) = explode("/", $uri['r']);
+        list($this->controller, $this->action) = explode("/", $uri);
         $this->params = $uri;
     }
     /**

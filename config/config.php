@@ -9,3 +9,4 @@ Config::set('routes', [
 
 Config::set('default_lang', 'en');
 Config::set('langs', ['en', 'ru']);
+Config::set('site_name', 'MVC first framework');

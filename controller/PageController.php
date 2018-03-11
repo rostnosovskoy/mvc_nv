@@ -7,7 +7,9 @@
  */
 namespace controller;
 
-class PageController
+use lib\Controller;
+
+class PageController extends Controller
 {
     public function staticAction($params = [])
     {
@@ -24,5 +26,10 @@ class PageController
         include $path;
         $result = ob_get_clean();
         return $result;
+    }
+
+    public function indexAction()
+    {
+        $this->data['message'] = "Hello world";
     }
 }

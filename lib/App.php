@@ -5,7 +5,7 @@ class App
 {
     public function __construct()
     {
-        set_exception_handler(function(){
+        set_exception_handler(function($e){
             echo "<div style='color: red;'>{$e->getMessage()}</div>";
             die;
         });
@@ -24,9 +24,26 @@ class App
         $actionName     = $router->getAction() . 'Action';
         $params         = $router->getParams();
 
-        $controllerName = "controller\\$controllerName";
-        $controller = new $controllerName();
+        $lang = new Lang();
+        $lang->load($router->getLang());
 
-        return $controller->$actionName($params);
+        $controllerName = "controller\\$controllerName";
+
+        /** @var Controller $controller */
+        $controller = new $controllerName();
+        $controller->$actionName($params);
+        //---------------------- innner view --------------
+        $innerView = new View( $router->getController(), $router->getAction() );
+        $innerData = $controller->getData();
+        $innerData['lang'] = $lang;
+
+        $content = $innerView->render($innerData, $path);
+
+        $view = new View();
+        $data = ['content' => $content];
+
+        return $view->render($data, "../view/{$router->getRoute()}.php");
+
+
     }
 }
