@@ -8,6 +8,6 @@ require_once "../lib/autoload.php";
 
 //$params = $_GET;
 $params = $_SERVER['REQUEST_URI'];
-$app = new \lib\App();
+$app = new App();
 $output = $app->run($params);
 echo $output;

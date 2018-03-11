@@ -5,10 +5,12 @@ class App
 {
     public function __construct()
     {
-        Config::set('routes', [
-           'default' => '',
-           'admin' => 'admin_',
-        ]);
+        set_exception_handler(function(){
+            echo "<div style='color: red;'>{$e->getMessage()}</div>";
+            die;
+        });
+
+        require "../config/config.php";
     }
 
     public function run($params)
